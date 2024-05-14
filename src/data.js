@@ -175,7 +175,7 @@ const calcAvgAgeCustom2 = function (people) {
 
 // Czy jest ktoś z krakow?
 function isFromCracovia(items) {
-    for (const item of items){
+    for (const item of items) {
         if (item.city.toLowerCase() === 'krakow') {
             return true;
         }
@@ -184,12 +184,62 @@ function isFromCracovia(items) {
     return false;
 }
 
-const isFromCracovia2 = (items) => items.some((item) => item.city.toLowerCase() === 'krakow');
+// const isFromCracovia2 = (items) => items.some((item) => item.city.toLowerCase() === 'krakow');
+//
+// const result = isFromCracovia(data);
+// console.log(result);
 
-const result = isFromCracovia(data);
+// czy wszyscy kochają js (includes/indexOf) -> true/false
+
+function isEveryoneLovesJS(items) {
+    for (const item of items) {
+        if (!item.hobbies.includes('js')) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+const isEveryoneLovesJS2 = (items) => items
+    .every((item) => !item.hobbies.includes('js'));
+
+// const result = isEveryoneLovesJS(data);
+// console.log(result)
+
+
+// ile jest hobbies bez powtórzeń (unique)
+const countUniqueHobbies = function (elements) {
+    const hobbies = [];
+
+    for (const element of elements) {
+        for (const hobby of element.hobbies) {
+            if (!hobbies.includes(hobby)) {
+                hobbies.push(hobby);
+            }
+        }
+    }
+
+    return hobbies.length;
+}
+
+const countUniqueHobbies2 = function (elements) {
+    const hobbies = new Set();
+
+    for (const element of elements) {
+        for (const hobby of element.hobbies) {
+            hobbies.add(hobby);
+        }
+    }
+
+    return hobbies.size;
+}
+
+const countUniqueHobbies3 = (elements) => new Set(elements.flatMap((element) => element.hobbies)).size;
+
+
+const result = countUniqueHobbies(data);
 console.log(result);
-
-
 
 
 
